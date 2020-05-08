@@ -1,0 +1,17 @@
+{
+    "name": "DGraph.Editor",
+    "references": [
+        "GUID:b8e24fd1eb19b4226afebb2810e3c19b",
+        "GUID:002c1bbed08fa44d282ef34fd5edb138",
+        "GUID:fb0fc52132588c1479437615281895f3"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
