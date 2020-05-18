@@ -38,9 +38,62 @@ namespace DGraph.Editor.Conversation
 			NodeEditorGUILayout.PropertyField(this.serializedObject.FindProperty("prev"));
 			NodeEditorGUILayout.PropertyField(this.serializedObject.FindProperty("next"));
 			EditorGUILayout.EndHorizontal();
+			
+			//Additional data
+			var addData = ((ConversationGraph) this.node.graph).GetAdditionalData();
+			if (addData != null)
+			{
+				foreach (var key in addData.Keys)
+				{
+					var selectableAdditionalDataOptions = addData[key];
+
+					if (selectableAdditionalDataOptions.Count == 0)
+					{
+						continue;
+					}
+					
+					int selectedAdditionalData;
+					if (this.node.additionalData.ContainsKey(key))
+					{
+						selectedAdditionalData =
+							selectableAdditionalDataOptions.FindIndex(i => i == this.node.additionalData[key]);
+					}
+					else
+					{
+						selectedAdditionalData = 0;
+					}
+
+					if (selectedAdditionalData < 0)
+					{
+						selectedAdditionalData = 0;
+					}
+
+					EditorGUILayout.BeginHorizontal();
+					EditorGUILayout.PrefixLabel(key + ": ");
+					var newSelected =
+						EditorGUILayout.Popup(selectedAdditionalData, selectableAdditionalDataOptions.ToArray());
+					EditorGUILayout.EndHorizontal();
+
+					if (this.node.additionalData.ContainsKey(key))
+					{
+						this.node.additionalData[key] = selectableAdditionalDataOptions[newSelected];
+					}
+					else
+					{
+						this.node.additionalData.Add(key, selectableAdditionalDataOptions[newSelected]);
+					}
+				}
+			}
 
 			//Find speaker
 			var options = ((ConversationGraph) this.node.graph).characterMetadata.GetCharacterIds().ToList();
+
+			if (options.Count == 0)
+			{
+				EditorGUILayout.LabelField("No characters found");
+				return;
+			}
+			
 			var selected = options.FindIndex(i => i == this.node.speaker_id);
 			if (selected < 0 || selected >= options.Count)
 			{
