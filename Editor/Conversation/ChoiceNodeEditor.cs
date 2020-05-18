@@ -77,13 +77,12 @@ namespace DGraph.Editor.Conversation
 			}
 
 			//Remove depending on saved indexes from bottom to top to not disturb index values
-			removeList.Reverse();
-			removeList.ForEach(i =>
+			foreach (var i in Enumerable.Reverse(removeList))
 			{
 				//Remove port and remove choice in List
 				this.node.RemoveDynamicPort($"OutputChoice{i}");
 				this.node.choices.RemoveAt(i);
-			});
+			}
 
 			//Draw button to add choices
 			if (GUILayout.Button("Add"))

@@ -5,8 +5,6 @@ namespace DGraph.Editor
 
 	using Nodes;
 
-	using Sirenix.Utilities;
-
 	using UnityEditor;
 
 	using UnityEngine;
@@ -54,7 +52,10 @@ namespace DGraph.Editor
 				EditorGUILayout.EndHorizontal();
 			}
 
-			Enumerable.Reverse(removeList).ForEach(i => this.node.Options.RemoveAt(i));
+			foreach (var i in Enumerable.Reverse(removeList))
+			{
+				this.node.Options.RemoveAt(i);
+			}
 
 			if (GUILayout.Button("Add"))
 			{
