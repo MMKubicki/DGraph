@@ -119,7 +119,10 @@ namespace DGraph
 			var text = node.text;
 			var character = GetCharacter(node.speaker_id, characters);
 
-			return new TextStep(text, character);
+			var ts = new TextStep(text, character);
+			ts.SetAdditionalData(node.additionalData);
+
+			return ts;
 		}
 
 		private static ChoiceStep EvaluateChoiceNode(ChoiceNode node, List<Character> characters)
