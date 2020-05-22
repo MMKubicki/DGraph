@@ -10,8 +10,12 @@ namespace DGraph.Nodes.Conversation
 	{
 		public string speaker_id;
 
-		public Dictionary<string, string> additionalData = new Dictionary<string, string>();
-		
+		[SerializeField]
+		public List<string> additionalDataKeys;
+
+		[SerializeField]
+		public List<string> additionalDataValues;
+
 		[TextArea]
 		public string text;
 	}

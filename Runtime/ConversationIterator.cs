@@ -1,3 +1,5 @@
+using ICSharpCode.NRefactory.Ast;
+
 namespace DGraph
 {
 	using System.Collections.Generic;
@@ -120,7 +122,14 @@ namespace DGraph
 			var character = GetCharacter(node.speaker_id, characters);
 
 			var ts = new TextStep(text, character);
-			ts.SetAdditionalData(node.additionalData);
+
+			var dic = new Dictionary<string, string>();
+			for (var i = 0; i < node.additionalDataKeys.Count; i++)
+			{
+				dic.Add(node.additionalDataKeys[i], node.additionalDataValues[i]);
+			}
+
+			ts.SetAdditionalData(dic);
 
 			return ts;
 		}

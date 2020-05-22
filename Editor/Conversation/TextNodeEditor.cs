@@ -53,10 +53,10 @@ namespace DGraph.Editor.Conversation
 					}
 					
 					int selectedAdditionalData;
-					if (this.node.additionalData.ContainsKey(key))
+					if (this.node.additionalDataKeys.Contains(key))
 					{
 						selectedAdditionalData =
-							selectableAdditionalDataOptions.FindIndex(i => i == this.node.additionalData[key]);
+							selectableAdditionalDataOptions.FindIndex(i => i == this.node.additionalDataValues[this.node.additionalDataKeys.IndexOf(key)]);
 					}
 					else
 					{
@@ -74,13 +74,15 @@ namespace DGraph.Editor.Conversation
 						EditorGUILayout.Popup(selectedAdditionalData, selectableAdditionalDataOptions.ToArray());
 					EditorGUILayout.EndHorizontal();
 
-					if (this.node.additionalData.ContainsKey(key))
+					if (this.node.additionalDataKeys.Contains(key))
 					{
-						this.node.additionalData[key] = selectableAdditionalDataOptions[newSelected];
+						this.node.additionalDataValues[this.node.additionalDataKeys.IndexOf(key)] = selectableAdditionalDataOptions[newSelected];
 					}
 					else
 					{
-						this.node.additionalData.Add(key, selectableAdditionalDataOptions[newSelected]);
+						this.node.additionalDataKeys.Add(key);
+						var index = this.node.additionalDataKeys.IndexOf(key);
+						this.node.additionalDataValues.Insert(index, selectableAdditionalDataOptions[newSelected]);
 					}
 				}
 			}
