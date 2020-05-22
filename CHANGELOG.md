@@ -8,6 +8,9 @@
 - Removing duplication of code from NodeEditors and NodeInspectors
 
 ## 1.0.0-preview.2
+- FIX Additional Data was not serialized
+
+## 1.0.0-preview.2
 - Additional Data:
     - Can add a additional data node to graph
     - injects additional information into text node
