@@ -38,6 +38,11 @@ namespace DGraph.Editor.Conversation
 			NodeEditorGUILayout.PropertyField(this.serializedObject.FindProperty("prev"));
 			NodeEditorGUILayout.PropertyField(this.serializedObject.FindProperty("next"));
 			EditorGUILayout.EndHorizontal();
+
+			if (this.node.graph == null)
+			{
+				Debug.Log("Null graph");
+			}
 			
 			//Additional data
 			var addData = ((ConversationGraph) this.node.graph).GetAdditionalData();

@@ -1,11 +1,11 @@
 {
   "name": "net.ninprof.dgraph",
   "description": "Small dialog graph tool for Unity",
-  "version": "1.0.0-preview.3",
-  "unity": "2019.3",
+  "version": "1.0.0-preview.4",
+  "unity": "2019.4",
   "displayName": "DGraph",
   "dependencies": {
-    "com.github.siccity.xnode": "1.7.0"
+    "com.github.siccity.xnode": "1.8.0"
   },
   "author": {
     "name": "Michael Mario Kubicki",

@@ -67,7 +67,7 @@ namespace DGraph.Editor.Conversation
 
 				this.node.choices[i] = EditorGUILayout.TextArea(this.node.choices[i]);
 
-				if (GUILayout.Button("-", GUILayout.Width(20)))
+				if (i == this.node.choices.Count - 1 && GUILayout.Button("-", GUILayout.Width(20)))
 				{
 					removeList.Add(i);
 				}

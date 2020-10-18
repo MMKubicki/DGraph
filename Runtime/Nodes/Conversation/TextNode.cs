@@ -11,12 +11,12 @@ namespace DGraph.Nodes.Conversation
 		public string speaker_id;
 
 		[SerializeField]
-		public List<string> additionalDataKeys;
+		public List<string> additionalDataKeys = new List<string>();
 
 		[SerializeField]
-		public List<string> additionalDataValues;
+		public List<string> additionalDataValues = new List<string>();
 
 		[TextArea]
-		public string text;
+		public string text = "";
 	}
 }

@@ -25,6 +25,18 @@ namespace DGraph.Editor.Conversation
 		
 		public override void OnInspectorGUI()
 		{
+			var graph = this.node.graph as ConversationGraph;
+
+			if (graph == null)
+			{
+				Debug.LogError("Wrong graph");
+			}
+			
+			if (!graph.characterMetadata.GetCharacters().Any())
+			{
+				return;
+			}
+			
 			//Find speaker
 			var options = ((ConversationGraph) this.node.graph).characterMetadata.GetCharacterIds().ToList();
 			var selected = options.FindIndex(i => i == this.node.speaker_id);
