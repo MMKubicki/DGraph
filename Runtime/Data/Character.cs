@@ -20,5 +20,10 @@ namespace DGraph.Data
 			this.sprite = sprite;
 			this.color = color;
 		}
+
+		public Sprite GetSprite()
+		{
+			return this.sprite[0];
+		}
 	}
 }
