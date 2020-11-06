@@ -22,6 +22,7 @@ namespace DGraph.Editor.Character
 			EditorGUILayout.PropertyField(serializedObject.FindProperty("charName"));
 			EditorGUILayout.PropertyField(serializedObject.FindProperty("sprite"));
 			EditorGUILayout.PropertyField(serializedObject.FindProperty("color"));
+			EditorGUILayout.PropertyField(serializedObject.FindProperty("additionalSprites"));
 			serializedObject.ApplyModifiedProperties();
 		}
 	}

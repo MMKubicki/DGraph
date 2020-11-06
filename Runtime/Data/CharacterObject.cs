@@ -1,6 +1,8 @@
 namespace DGraph.Data
 {
-  using UnityEngine;
+	using System.Collections.Generic;
+
+	using UnityEngine;
 
   [CreateAssetMenu(fileName = "CharacterObject", menuName = "DGraph/Character", order = 0)]
 	public class CharacterObject : ScriptableObject
@@ -9,10 +11,14 @@ namespace DGraph.Data
 		public string charName;
 		public Sprite sprite;
 		public Color color;
+		public List<Sprite> additionalSprites = new List<Sprite>();
 
 		public Character GetCharacter()
 		{
-			return new Character(this.id, this.charName, this.sprite, this.color);
+			var sprites = new List<Sprite> { this.sprite };
+			sprites.AddRange(this.additionalSprites);
+			
+			return new Character(this.id, this.charName, sprites, this.color);
 		} 
 	}
 }

@@ -7,6 +7,10 @@
     - Run an action on activation of node
 - Removing duplication of code from NodeEditors and NodeInspectors
 
+## 1.0.0-preview.5
+- ADD:
+    - Multiple character portraits in character node
+
 ## 1.0.0-preview.4
 - UPDATE:
     - xNode 1.7 -> 1.8.0

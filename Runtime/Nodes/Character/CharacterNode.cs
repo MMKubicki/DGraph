@@ -1,5 +1,7 @@
 namespace DGraph.Nodes.Character
 {
+	using System.Collections.Generic;
+
 	using Data;
 
 	using UnityEngine;
@@ -12,12 +14,16 @@ namespace DGraph.Nodes.Character
 		public string id = "EDIT";
 		[FormerlySerializedAs("char_name")]
 		public string charName = "NAME";
-		public Sprite sprite;
-		public Color color = Color.black;
+		public Sprite       sprite;
+		public Color        color            = Color.black;
+		public List<Sprite> additionalSprites = new List<Sprite>();
 
 		protected override Character GetCharacter()
 		{
-			return new Character(this.id, this.charName, this.sprite, this.color);
+			var sprites = new List<Sprite> { this.sprite };
+			sprites.AddRange(this.additionalSprites);
+			
+			return new Character(this.id, this.charName, sprites, this.color);
 		}
 	}
 }
